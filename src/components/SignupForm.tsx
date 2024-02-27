@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Backend_URL } from "@/lib/Constants";
 
@@ -18,6 +18,8 @@ export default function SignupForm() {
     password: "",
   });
 
+  const [error, setError] = useState("");
+
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,7 +28,7 @@ export default function SignupForm() {
     const { name, email, password } = data.current;
 
     if (!name || !email || !password) {
-      console.log("Please fill all the fields");
+      setError("Please fill all the fields");
       return;
     }
 
@@ -42,10 +44,10 @@ export default function SignupForm() {
       if (res.ok) {
         router.push("/");
       } else {
-        console.log("User registration failed");
+        setError("User registration failed");
       }
     } catch (error) {
-      console.log("Error during registration: ", error);
+      setError(`Error during registration: ${error}`);
     }
   };
 
@@ -80,6 +82,11 @@ export default function SignupForm() {
           >
             Register
           </button>
+          {error && (
+            <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
+              {error}
+            </div>
+          )}
           <div>
             <Link className="text-sm mt-3 text-right text-white" href={"/"}>
               Already have an account?

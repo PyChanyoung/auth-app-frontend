@@ -2,22 +2,29 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 
+type FormInputs = {
+  email: string;
+  password: string;
+};
+
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const data = useRef<FormInputs>({
+    email: "",
+    password: "",
+  });
+
+  const [error, setError] = useState("");
+
   const router = useRouter();
-  const pathname = usePathname();
 
-  useEffect(() => {
-    console.log(`Page moved to ${pathname}`);
-  }, [pathname]);
-
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const { email, password } = data.current;
+
     const res = await signIn("credentials", {
       redirect: false,
       email,
@@ -25,8 +32,9 @@ export default function LoginForm() {
     });
 
     if (res?.error) {
-      console.log(res.error);
+      setError("Credentials are incorrect. Please check email and password.");
     } else {
+      console.log(res?.ok, res?.status, res?.url);
       router.replace("/dashboard");
     }
   };
@@ -36,13 +44,13 @@ export default function LoginForm() {
         <h1 className="text-xl font-bold text-white my-4">Enter the details</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => (data.current.email = e.target.value)}
             type="text"
             placeholder="Email"
             className="placeholder-gray-500"
           />
           <input
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => (data.current.password = e.target.value)}
             type="password"
             placeholder="Password"
             className="placeholder-gray-500"
@@ -62,6 +70,11 @@ export default function LoginForm() {
               <Link href={"/register"}>Sign Up</Link>
             </button>
           </div>
+          {error && (
+            <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
+              {error}
+            </div>
+          )}
         </form>
       </div>
     </div>
