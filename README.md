@@ -1,5 +1,7 @@
 ## Table of Contents
 
+0. [Workflows](#workflows)
+
 1. [Project Goals](#project-goals)
 
    - [Goals](#goals)
@@ -26,6 +28,10 @@
 
 5. [Deployment](#deployment)
    - [How to run this project locally](#how-to-run-this-project-locally)
+
+# Workflows
+
+![Workflows](https://drive.google.com/file/d/143CoCzBIRvQCYXmmCpDQyux-Pn1kuPZP/view?usp=sharing)
 
 # Project Goals
 
