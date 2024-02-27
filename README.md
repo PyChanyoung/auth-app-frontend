@@ -1,37 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Table of Contents
 
-## Getting Started
+1. [Project Goals](#project-goals)
 
-First, run the development server:
+   - [Goals](#goals)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. [Features](#features)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   - [Existing Features](#existing-features)
+     - [Log In Page](#log-in-page)
+     - [Sign Up Page](#sign-up-page)
+     - [Dashboard](#dashboard)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. [Information Architecture](#information-architecture)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   - [Database choice](#database-choice)
+   - [Data Models](#data-models)
+     - [User](#user)
 
-## Learn More
+4. [Technologies Used](#technologies-used)
 
-To learn more about Next.js, take a look at the following resources:
+   - [Tools](#tools)
+   - [Databases](#databases)
+   - [Libraries](#libraries)
+   - [Languages](#languages)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. [Deployment](#deployment)
+   - [How to run this project locally](#how-to-run-this-project-locally)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# Project Goals
 
-## Deploy on Vercel
+## Goals
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- To implement a full-stack web application that allows users to sign up and log in to a dashboard where they can view their personal information.
+- Dashboard will be secured, not enter without logging in.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# auth-app-frontend
+# Features
+
+## Existing Features
+
+### Log In Page
+
+- Users can log in to their dashboard by entering their username and password.
+- If the user does not have an account, they can click the "Sign Up" button to create an account.
+- Validation for the userdata is handled by the backend and relevant feedback is sent to the user.
+
+### Sign Up Page
+
+- Users can sign up for an account by entering their username, email, and password.
+- If the user already has an account, they can click the "Log In" button to log in.
+- User data is handled by the backend and created in the database.
+
+### Dashboard
+
+- Users can view their personal information after logging in.
+- The dashboard is secured and cannot be accessed without logging in.
+
+# Information Architecture
+
+## Database choice
+
+- MongoDB was chosen as the database for this project.
+-
