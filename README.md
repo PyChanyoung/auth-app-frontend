@@ -31,7 +31,7 @@
 
 # Workflows
 
-![Workflows](https://drive.google.com/file/d/143CoCzBIRvQCYXmmCpDQyux-Pn1kuPZP/view?usp=sharing)
+![Workflows](./assets/workflows.png)
 
 # Project Goals
 
